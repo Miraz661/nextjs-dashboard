@@ -1,9 +1,25 @@
 {
+  "name": "nextjs-dashboard",
+  "version": "1.0.0",
   "private": true,
+  "description": "This is the starter template for the Next.js App Router Course. It contains the starting code for the dashboard application.",
+  "homepage": "https://github.com/Miraz661/nextjs-dashboard#readme",
+  "bugs": {
+    "url": "https://github.com/Miraz661/nextjs-dashboard/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Miraz661/nextjs-dashboard.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "postcss.config.js",
   "scripts": {
     "build": "next build",
     "dev": "next dev --turbopack",
-    "start": "next start"
+    "start": "next start",
+    "lint": "eslint ."
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
@@ -12,7 +28,7 @@
     "bcrypt": "^5.1.1",
     "clsx": "^2.1.1",
     "next": "latest",
-    "next-auth": "5.0.0-beta.25",
+    "next-auth": "^5.0.0-beta.31",
     "postcss": "8.5.1",
     "postgres": "^3.4.6",
     "react": "latest",
@@ -26,7 +42,9 @@
     "@types/bcrypt": "^5.0.2",
     "@types/node": "22.10.7",
     "@types/react": "19.0.7",
-    "@types/react-dom": "19.0.3"
+    "@types/react-dom": "19.0.3",
+    "eslint": "^9.39.4",
+    "eslint-config-next": "^16.2.9"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
