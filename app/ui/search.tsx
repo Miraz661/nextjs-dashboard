@@ -3,9 +3,12 @@
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
+import { useEffect } from "react";
+import toast from "react-hot-toast";
 
 export default function Search({ placeholder }: { placeholder: string }) {
   const searchParams = useSearchParams();
+  const msg = searchParams.get("msg");
   const router = useRouter();
   const pathname = usePathname();
 
@@ -19,6 +22,15 @@ export default function Search({ placeholder }: { placeholder: string }) {
     }
     router.replace(`${pathname}?${params.toString()}`);
   }, 500);
+
+
+  if(msg){
+    toast.success(msg);
+    const params = new URLSearchParams(searchParams);
+    params.delete("msg");
+    router.replace(`${pathname}?${params.toString()}`);
+  }
+
   return (
     <div className="relative flex flex-1 flex-shrink-0">
       <label htmlFor="search" className="sr-only">

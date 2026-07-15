@@ -61,7 +61,7 @@ export async function createInvoice(prevState: State, formData: FormData) {
     };
   }
   revalidatePath("/dashboard/invoices");
-  redirect("/dashboard/invoices");
+  redirect("/dashboard/invoices?msg=Invoice created successfully.");
 }
 
 export async function updateInvoice(
@@ -93,13 +93,13 @@ export async function updateInvoice(
     throw new Error("Database Error: Failed to Update Invoice.");
   }
   revalidatePath("/dashboard/invoices");
-  redirect("/dashboard/invoices");
+  redirect("/dashboard/invoices?msg=Invoice updated successfully.");
 }
 
 export async function deleteInvoice(id: string) {
-  throw new Error("Failed to delete invoice");
   await sql`DELETE FROM invoices WHERE id = ${id}`;
   revalidatePath("/dashboard/invoices");
+  redirect("/dashboard/invoices?msg=Invoice deleted successfully.");
 }
 
 export async function authenticate(
