@@ -99,7 +99,7 @@ export async function updateInvoice(
 export async function deleteInvoice(id: string) {
   await sql`DELETE FROM invoices WHERE id = ${id}`;
   revalidatePath("/dashboard/invoices");
-  redirect("/dashboard/invoices?msg=Invoice deleted successfully.");
+  // redirect("/dashboard/invoices?msg=Invoice deleted successfully.");
 }
 
 export async function authenticate(
