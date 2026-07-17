@@ -20,6 +20,11 @@ async function getUser(email: string): Promise<User | undefined> {
 
 export const { auth, signIn, signOut } = NextAuth({
   ...authConfig,
+  session: {
+    strategy: "jwt",
+    maxAge: 15 * 60,
+    updateAge: 5 * 60,
+  },
   providers: [
     Credentials({
       async authorize(credentials) {
