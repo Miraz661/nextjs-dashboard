@@ -10,15 +10,27 @@ import { ArrowRightIcon } from '@heroicons/react/20/solid';
 import { Button } from '@/app/ui/button';
 import { useActionState } from 'react';
 import { authenticate } from '@/app/lib/actions';
-import { useSearchParams } from 'next/navigation';
+import { useSearchParams, usePathname, useRouter } from 'next/navigation';
+import toast from 'react-hot-toast';
  
 export default function LoginForm() {
   const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const router = useRouter();
   const callbackUrl = searchParams.get('callbackUrl') || '/dashboard';
+  const msg = searchParams.get('msg');
   const [errorMessage, formAction, isPending] = useActionState(
     authenticate,
     undefined,
   );
+
+  if(msg) {
+    toast.error(msg);
+    const newSearchParams = new URLSearchParams(searchParams);
+    newSearchParams.delete('msg');
+    const newUrl = `${pathname}?${newSearchParams.toString()}`;
+    router.replace(newUrl);
+  }
  
   return (
     <form action={formAction} className="space-y-3">
