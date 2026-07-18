@@ -4,6 +4,11 @@ import Link from "next/link";
 import { lusitana } from "@/app/ui/fonts";
 import Image from "next/image";
 import heroMobile from "@/public/hero-mobile.png";
+import { Metadata } from "next";
+
+export const metadata: Metadata = { 
+  title: "Acme Academy"
+}
 
 export default function Page() {
   return (
